@@ -31,10 +31,11 @@ class CocheDeLujo extends Coche{
     {
         echo 'Color:'.$this->color;
         echo '<hr/>';
-        echo 'Extras:'.$this->extras();
+        echo 'Extras:'.$this->extras;
     }
 }
 
-$miVentas = new Ventas();
-$miVentas->getMarca();
-$miVentas->getModelo();
+$miCoche = new CocheDeLujo();
+$miCoche->setColor('Rojo');
+$miCoche->setExtras('TV');
+$miCoche->printCaracteristicas();

@@ -4,7 +4,7 @@ class Persona
 {
     protected string $nombre;
     protected string $apellidos;
-    protected int $fechaNacimiento;
+    protected string  $fechaNacimiento;
 
     public function __construct(
         string $nombre, 
@@ -30,6 +30,4 @@ class Persona
     {
         return $this->fechaNacimiento;
     }
-}
-    , seed, [])
 }
