@@ -1,10 +1,8 @@
-Sí. Tomando el README que me pasaste como estructura, pero ahora enfocado en **estos ejercicios de PHP sobre POO**, y dejando espacios para que pongas las capturas de los resultados, te lo dejo listo para copiar y pegar.
-
 # Universidad Tecnológica de Panamá
 ## Facultad de Ingeniería de Sistemas Computacionales
 
 **Fecha de Ejecución:**  
-07 de octubre de 2026
+ 02 de octubre de 2026
 
 # Objetivos
 
@@ -508,9 +506,8 @@ En general, la práctica permitió comprender mejor cómo se estructura un progr
 # 📚 Referencias
 
 - PHP Documentation. (2026). *Classes and Objects*. https://www.php.net/manual/en/language.oop5.php
-- PHP Documentation. (2026). *Object Inheritance*. https://www.php.net/manual/en/language.oop5.inheritance.php
-- PHP Documentation. (2026). *Traits*. https://www.php.net/manual/en/language.oop5.traits.php
 - PHP Documentation. (2026). *Static Keyword*. https://www.php.net/manual/en/language.oop5.static.php
+- PHP. (2026). PHP: Hypertext Preprocessor. https://www.php.net/
 
 # 👤 Información del Estudiante
 
