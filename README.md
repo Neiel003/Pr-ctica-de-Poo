@@ -1,517 +1,162 @@
 # Universidad Tecnológica de Panamá
 ## Facultad de Ingeniería de Sistemas Computacionales
 
-**Fecha de Ejecución:**  
- 02 de octubre de 2026
+**Fecha de Ejecución:** 02 de octubre de 2026
 
 # Objetivos
 
 - Comprender los conceptos fundamentales de la Programación Orientada a Objetos (POO) utilizando PHP.
-- Aplicar conceptos como clases, objetos, herencia, encapsulamiento, métodos y propiedades.
-- Comprender el funcionamiento de los modificadores de acceso `public`, `protected` y `private`.
-- Implementar constructores y métodos para trabajar con atributos de diferentes clases.
-- Comprender el uso de `static`, `self`, constantes, `final` y `traits` en PHP.
-- Identificar las dificultades encontradas durante la ejecución de los ejercicios y las soluciones aplicadas.
+- Aplicar clases, objetos, herencia y encapsulamiento.
+- Comprender el funcionamiento de constructores, métodos y modificadores de acceso.
+- Identificar el uso de `static`, `self`, `parent`, `final`, constantes y `traits`.
+- Practicar los conceptos mediante ejercicios y comprobar sus resultados.
 
 # Introducción
 
-PHP permite trabajar con el paradigma de Programación Orientada a Objetos (POO), facilitando la creación de aplicaciones mediante clases y objetos. Este paradigma permite organizar el código de una manera más estructurada, reutilizable y fácil de mantener.
+PHP permite trabajar con el paradigma de Programación Orientada a Objetos (POO), facilitando la organización del código mediante clases y objetos.
 
-En este laboratorio se realizaron diferentes ejercicios utilizando PHP para comprender los principales conceptos relacionados con la Programación Orientada a Objetos. Se trabajó con clases, atributos, métodos, constructores, herencia, encapsulamiento, constantes, métodos estáticos, clases finales y traits.
-
-A través de estos ejercicios se pudo observar cómo las clases pueden compartir características mediante la herencia, cómo se pueden proteger los atributos utilizando modificadores de acceso y cómo se pueden reutilizar funcionalidades mediante diferentes mecanismos proporcionados por PHP.
+En este laboratorio se realizaron diferentes ejercicios para comprender cómo funcionan la herencia, el encapsulamiento, los constructores, los métodos estáticos, las constantes y los traits. También se realizaron operaciones matemáticas mediante una clase para calcular el área y el perímetro de un círculo.
 
 # Requisitos Previos
 
-Para realizar los ejercicios fue necesario contar con el siguiente entorno:
-
 ### Tecnologías utilizadas
 
-- 🐘 PHP
-- 🌐 Servidor web Apache
-- 💻 XAMPP / WampServer
-- 📝 Visual Studio Code
-- 🖥️ Sistema Operativo Windows 10 / 11
-
-# Conceptos utilizados
-
-Durante el laboratorio se trabajaron los siguientes conceptos:
-
-- Clases y objetos.
-- Constructores.
-- Encapsulamiento.
-- Modificadores de acceso.
-- Herencia.
-- Métodos `get` y `set`.
-- `parent`.
-- `self`.
-- Métodos y propiedades `static`.
-- Constantes de clase.
-- `final`.
-- `traits`.
-- Tipado de propiedades y métodos.
-- Uso de `M_PI` para operaciones matemáticas.
+- PHP
+- Servidor web Apache
+- XAMPP / WampServer
+- Visual Studio Code
+- Sistema operativo Windows 10 / 11
 
 # Desarrollo de los ejercicios
 
 ## 1. Clase Persona
 
-En el primer ejercicio se creó una clase llamada `Persona`, la cual contiene tres atributos protegidos:
+Se creó la clase `Persona` con los atributos nombre, apellidos y fecha de nacimiento. Se utilizó un constructor para inicializar los datos y métodos `get` para acceder a la información.
 
-- Nombre.
-- Apellidos.
-- Fecha de nacimiento.
-
-También se implementó un constructor para inicializar estos valores y métodos `get` para poder obtener la información almacenada en los atributos.
-
-### Código
-
-```php
-<?php
-
-class Persona
-{
-    protected string $nombre;
-    protected string $apellidos;
-    protected string $fechaNacimiento;
-
-    public function __construct(
-        string $nombre, 
-        string $apellidos, 
-        string $fechaNacimiento)
-    {
-        $this->nombre = $nombre;
-        $this->apellidos = $apellidos;
-        $this->fechaNacimiento = $fechaNacimiento;
-    }
-
-    public function getNombre()
-    {
-        return $this->nombre;
-    }
-
-    public function getApellidos()
-    {
-        return $this->apellidos;
-    }
-
-    public function getFechaNacimiento()
-    {
-        return $this->fechaNacimiento;
-    }
-}
-```
-
-### Resultado
-
-**Aquí se colocará la captura de pantalla del resultado de la ejecución.**
-
-> 🖼️ **Imagen del resultado:**  
-> `![Resultado clase Persona](ruta/de/la/imagen.png)`
+**Archivo:** `Persona.php`
 
 ---
 
 ## 2. Herencia con la clase Estudiante
 
-En este ejercicio se creó la clase `Estudiante`, la cual hereda de la clase `Persona`.
+Se creó la clase `Estudiante`, que hereda de `Persona` y agrega atributos como índice académico, cohorte, estado académico y modalidad de estudio. Se utilizó `extends` para establecer la herencia y `parent::__construct()` para inicializar los datos heredados.
 
-La clase `Estudiante` agrega nuevos atributos relacionados con un estudiante, como el índice académico, cohorte, estado académico y modalidad de estudio.
-
-Se utilizó `extends` para establecer la herencia y `parent::__construct()` para utilizar el constructor de la clase padre.
-
-Posteriormente se creó un objeto `Estudiante` y se utilizaron los métodos `get` para mostrar la información.
-
-### Código
-
-```php
-<?php
-include("Persona.php");
-
-class Estudiante extends Persona
-{
-    protected float $indiceAcademico;
-    protected int $cohorte;
-    protected int $estadoAcademico;
-    protected int $modalidadEstudio;
-
-    public function __construct(
-        float $indiceAcademico,
-        int $cohorte,
-        int $estadoAcademico,
-        int $modalidadEstudio,
-        string $nombre,
-        string $apellido,
-        string $fechaNacimiento)
-    {
-        parent::__construct($nombre, $apellido, $fechaNacimiento);
-        $this->indiceAcademico = $indiceAcademico;
-        $this->cohorte = $cohorte;
-        $this->estadoAcademico = $estadoAcademico;
-        $this->modalidadEstudio = $modalidadEstudio;
-    }
-
-    public function getIndiceAcademico(): float
-    {
-        return $this->indiceAcademico;
-    }
-
-    public function getCohorte(): int
-    {
-        return $this->cohorte;
-    }
-
-    public function getEstadoAcademico(): int
-    {
-        return $this->estadoAcademico;
-    }
-
-    public function getModalidadEstudio(): int
-    {
-        return $this->modalidadEstudio;
-    }
-}
-
-$miEstudiante = new Estudiante(
-    3.5, 
-    2023, 
-    1, 
-    2, 
-    "Juan", 
-    "Pérez", 
-    "2000-01-01"
-);
-
-echo "El nombre del estudiante es: " . $miEstudiante->getNombre() . "<br>";
-echo "El apellido del estudiante es: " . $miEstudiante->getApellidos() . "<br>";
-echo "El índice académico del estudiante es: " . $miEstudiante->getIndiceAcademico() . "<br>";
-echo "El cohorte del estudiante es: " . $miEstudiante->getCohorte() . "<br>";
-echo "El estado académico del estudiante es: " . $miEstudiante->getEstadoAcademico() . "<br>";
-echo "La modalidad de estudio del estudiante es: " . $miEstudiante->getModalidadEstudio() . "<br>";
-```
+**Archivo:** `Estudiante.php`
 
 ### Resultado
 
-**Aquí se colocará la captura de pantalla con los datos del estudiante.**
-
-> 🖼️ **Imagen del resultado:**  
-> `![Resultado clase Estudiante](ruta/de/la/imagen.png)`
+![Resultado del ejercicio Estudiante](./Estudiante.png)
 
 ---
 
 ## 3. Uso de Traits
 
-En este ejercicio se trabajó con un `trait` llamado `Modelo`.
+Se creó el trait `Modelo`, que contiene un método relacionado con el modelo de un coche. Después, se incorporó mediante `use` en la clase `Ventas`, que también hereda de `Coche`.
 
-Un trait permite reutilizar métodos en diferentes clases. En este caso, el trait contiene el método `getModelo()`, mientras que la clase `Ventas` utiliza el trait mediante la palabra reservada `use`.
+Este ejercicio permite observar cómo se pueden reutilizar funcionalidades mediante traits.
 
-La clase `Ventas` también hereda de `Coche`, por lo que puede utilizar las funcionalidades de ambas estructuras.
-
-### Código
-
-```php
-<?php
-
-class Coche{
-    public function getMarca(){
-        return "Renault";
-    }
-}
-
-trait Modelo{
-    public function getModelo(){
-        parent::getMarca();
-        echo 'Clio';
-    }
-}
-
-class Ventas extends Coche{
-    use Modelo;
-}
-```
-
-### Resultado
-
-**Aquí se colocará la captura de pantalla del resultado.**
-
-> 🖼️ **Imagen del resultado:**  
-> `![Resultado Trait](ruta/de/la/imagen.png)`
+**Archivo:** `EjemploTraits.php`
 
 ---
 
 ## 4. Métodos estáticos y `self`
 
-En este ejercicio se utilizaron métodos estáticos mediante la palabra reservada `static`.
+Se trabajó con las clases `A` y `B`, utilizando métodos estáticos y herencia. Mediante `self::` se llamó a un método definido dentro de la clase padre, observando su comportamiento al redefinir ese método en la clase hija.
 
-La clase `A` contiene los métodos `miFuncion()` y `otraFuncion()`. El segundo método utiliza `self::miFuncion()` para llamar al método definido dentro de la propia clase.
-
-Posteriormente, la clase `B` hereda de `A` y redefine el método `miFuncion()`.
-
-Finalmente se llama a `B::otraFuncion()` para observar el comportamiento de `self` cuando existe herencia.
-
-### Código
-
-```php
-<?php
-
-Class A{
-    public static function miFuncion(){
-        echo __CLASS__;
-    }
-
-    public static function otraFuncion(){
-        self::miFuncion();
-    }
-}
-
-Class B extends A{
-    public static function miFuncion(){
-        echo __CLASS__;
-    }
-}
-
-B::otraFuncion();
-```
+**Archivo:** `EjemploLateStatic.php`
 
 ### Resultado
 
-**Aquí se colocará la captura de pantalla del resultado.**
-
-> 🖼️ **Imagen del resultado:**  
-> `![Resultado métodos estáticos](ruta/de/la/imagen.png)`
+![Resultado de métodos estáticos](./EjemploLateStatic.png)
 
 ---
 
 ## 5. Herencia y sobrescritura de métodos
 
-En este ejercicio se creó una clase `Coche` con un atributo protegido llamado `color`.
+Se creó la clase `Coche` con el atributo protegido `color` y posteriormente la clase `CocheDeLujo`, que hereda sus características y agrega el atributo `extras`.
 
-La clase contiene métodos para establecer y obtener el color, además de un método `printCaracteristicas()`.
+También se sobrescribió el método `printCaracteristicas()` para mostrar las características del vehículo.
 
-Posteriormente se creó `CocheDeLujo`, que hereda de `Coche` y agrega el atributo `extras`.
-
-También se sobrescribió el método `printCaracteristicas()` para mostrar tanto el color como los extras del vehículo.
-
-### Código
-
-```php
-<?php
-
-class Coche{
-    protected $color;
-
-    public function setColor($color)
-    {
-        $this->color = $color;
-    }
-
-    public function getColor()
-    {
-        return $this->color;
-    }
-
-    public function printCaracteristicas()
-    {
-        echo 'Color:'.$this->getColor();
-    }
-}
-
-class CocheDeLujo extends Coche{
-    protected $extras;
-
-    public function setExtras($extras)
-    {
-        $this->extras = $extras;
-    }
-
-    public function getExtras()
-    {
-        return $this->extras;
-    }
-
-    public function printCaracteristicas()
-    {
-        echo 'Color:'.$this->color;
-        echo '<hr/>';
-        echo 'Extras:'.$this->extras;
-    }
-}
-
-$miCoche = new CocheDeLujo();
-$miCoche->setColor('Rojo');
-$miCoche->setExtras('TV');
-$miCoche->printCaracteristicas();
-```
+**Archivo:** `Coche.php`
 
 ### Resultado
 
-**Aquí se colocará la captura de pantalla donde se muestre el color y los extras.**
-
-> 🖼️ **Imagen del resultado:**  
-> `![Resultado CocheDeLujo](ruta/de/la/imagen.png)`
+![Resultado de herencia y sobrescritura](./Coche.png)
 
 ---
 
 ## 6. Constantes de clase
 
-En este ejercicio se utilizó una constante dentro de una clase.
+Se declaró la constante `RUEDAS` dentro de la clase `Coche`, asignándole el valor `4`. Se comprobó cómo acceder a ella mediante el operador `::`, tanto desde la clase como desde un objeto.
 
-La clase `Coche` contiene la constante `RUEDAS`, cuyo valor es `4`.
-
-La constante puede ser utilizada directamente desde la clase mediante `Coche::RUEDAS` y también desde un objeto mediante `$miCoche::RUEDAS`.
-
-### Código
-
-```php
-<?php
-
-Class Coche{
-    const RUEDAS = 4;
-}
-
-Echo Coche::RUEDAS;
-
-$miCoche = new Coche();
-echo $miCoche::RUEDAS."<BR>";
-
-?>
-```
+**Archivo:** `Constantes.php`
 
 ### Resultado
 
-**Aquí se colocará la captura de pantalla del resultado.**
-
-> 🖼️ **Imagen del resultado:**  
-> `![Resultado constantes](ruta/de/la/imagen.png)`
+![Resultado de constantes](./Constantes.png)
 
 ---
 
-## 7. Clase `final`
+## 7. Clases finales (`final`)
 
-En este ejercicio se utilizó la palabra reservada `final`.
+Se utilizó la palabra reservada `final` para declarar la clase `Coche`. Después, se intentó crear una clase hija mediante `extends`, lo que provoca un error fatal porque una clase final no puede heredarse.
 
-Una clase declarada como `final` no puede ser heredada por otra clase. Por esta razón, al intentar crear `CocheDeLujo` extendiendo `Coche`, se genera un error.
-
-### Código
-
-```php
-<?php
-
-final class Coche{
-    public function getColor()
-    {     
-        echo "Rojo";
-    }
-}
-
-class cocheDeLujo extends Coche {
-    // Error Fatal, clase no heredada.
-}
-```
+**Archivo:** `Coche3.php`
 
 ### Resultado
 
-**Aquí se colocará la captura de pantalla donde se muestre el error generado al intentar heredar de una clase `final`.**
-
-> 🖼️ **Imagen del resultado:**  
-> `![Resultado clase final](ruta/de/la/imagen.png)`
+![Resultado de clase final](./Coche3.png)
 
 ---
 
 ## 8. Cálculo del área y perímetro de un círculo
 
-En este ejercicio se creó una clase `Circulo` utilizando encapsulamiento y tipado de datos.
+Se creó la clase `Circulo` con un atributo privado llamado `radio`. Mediante el constructor se inicializa el valor y, con los métodos `calcularArea()` y `calcularPerimetro()`, se realizan los cálculos correspondientes.
 
-El atributo `$radio` fue declarado como `private`, por lo que solamente puede ser utilizado directamente dentro de la clase.
+Se utilizó `M_PI` para representar el valor de pi y `number_format()` para presentar los resultados con dos decimales.
 
-El constructor recibe el radio y lo almacena utilizando `$this`.
-
-También se implementaron los métodos `calcularArea()` y `calcularPerimetro()` utilizando las fórmulas correspondientes.
-
-Finalmente, se utilizó `number_format()` para mostrar los resultados con dos decimales.
-
-### Código
-
-```php
-<?php
-
-class Circulo{
-    private float $radio;
-
-    public function __construct(float $radio){
-        $this->radio = $radio;
-    }
-
-    public function calcularArea(): float{
-        return M_PI *($this->radio * $this->radio);
-    }
-
-    public function calcularPerimetro(): float{
-        return 2 * M_PI * $this->radio;
-    }
-}
-
-$miCirculo = new Circulo(4);
-
-echo "\n";
-echo "Area del circlul: \t" .number_format($miCirculo->calcularArea(), 2, ".", ".");
-echo "\n";
-echo "Perímetro del círculo: \t" .number_format($miCirculo->calcularPerimetro(), 2, ".", ".");
-
-?>
-```
+**Archivo:** `Circulo.php`
 
 ### Resultado
 
-**Aquí se colocará la captura de pantalla mostrando el área y el perímetro del círculo.**
+![Resultado del cálculo del círculo](./Circulo.png)
 
-> 🖼️ **Imagen del resultado:**  
-> `![Resultado círculo](ruta/de/la/imagen.png)`
+---
 
-# 🧠 Conceptos aprendidos
+# Conceptos aprendidos
 
-A través de los diferentes ejercicios se pudieron aplicar varios conceptos importantes de la Programación Orientada a Objetos en PHP.
+Durante el laboratorio se trabajaron diferentes conceptos de POO en PHP:
 
-La **herencia** permitió crear nuevas clases a partir de otras existentes, como ocurrió con `Estudiante` a partir de `Persona` y `CocheDeLujo` a partir de `Coche`.
+- **Clases y objetos:** permiten organizar los datos y funcionalidades.
+- **Encapsulamiento:** controla el acceso a los atributos mediante `private` y `protected`.
+- **Herencia:** permite crear clases hijas a partir de clases existentes.
+- **Constructores:** inicializan los atributos de los objetos.
+- **Métodos estáticos:** permiten llamar métodos sin crear una instancia.
+- **`self` y `parent`:** permiten referenciar métodos de la propia clase y de la clase padre, respectivamente.
+- **Constantes:** permiten definir valores asociados a una clase.
+- **Traits:** facilitan la reutilización de métodos.
+- **`final`:** impide que una clase pueda ser heredada.
 
-El **encapsulamiento** permitió controlar el acceso a los atributos utilizando modificadores como `private` y `protected`.
+# Dificultades y soluciones
 
-También se trabajó con **constructores**, los cuales permiten inicializar los atributos de un objeto al momento de crearlo.
+Durante los ejercicios fue importante distinguir el funcionamiento de `self` y `parent`, especialmente al trabajar con herencia. También se tuvo que considerar la diferencia entre los modificadores de acceso `private` y `protected`.
 
-Los **métodos estáticos** permitieron llamar funciones directamente desde una clase sin necesidad de crear un objeto. Además, se pudo observar el comportamiento de `self` cuando se trabaja con herencia.
+Otro aspecto importante fue comprender que una clase declarada como `final` no puede ser heredada, por lo que intentar hacerlo genera un error fatal.
 
-Los **traits** permitieron reutilizar funcionalidades entre clases, mientras que las constantes permitieron definir valores que pertenecen a una clase.
+# Conclusión
 
-Finalmente, se comprobó el funcionamiento de `final`, que evita que una clase pueda ser heredada.
+En este laboratorio pude reforzar los conceptos básicos de la Programación Orientada a Objetos utilizando PHP. Mediante los ejercicios comprendí mejor cómo funcionan las clases, los objetos, la herencia y el encapsulamiento.
 
-# ⚠️ Dificultades y soluciones
+También pude practicar el uso de métodos estáticos, constantes, traits y clases finales. En general, la práctica me ayudó a comprender cómo organizar y reutilizar código mediante la POO.
 
-Durante la realización de los ejercicios se presentaron algunos detalles relacionados con la sintaxis y el funcionamiento de PHP.
+# Referencias
 
-Uno de los principales puntos fue comprender la diferencia entre `self`, `parent` y `static`, especialmente cuando se trabaja con herencia.
+- PHP. (s. f.). *PHP: Hypertext Preprocessor*. [https://www.php.net/](https://www.php.net/)
+- PHP. (s. f.). *Classes and Objects*. [https://www.php.net/manual/en/language.oop5.php](https://www.php.net/manual/en/language.oop5.php)
+- PHP. (s. f.). *Object Inheritance*. [https://www.php.net/manual/en/language.oop5.inheritance.php](https://www.php.net/manual/en/language.oop5.inheritance.php)
+- PHP. (s. f.). *Traits*. [https://www.php.net/manual/en/language.oop5.traits.php](https://www.php.net/manual/en/language.oop5.traits.php)
 
-También fue necesario tener en cuenta los modificadores de acceso, ya que los atributos `private` solamente pueden ser utilizados dentro de su propia clase, mientras que los atributos `protected` también pueden ser utilizados por las clases hijas.
-
-Otro punto importante fue comprender que una clase declarada como `final` no puede ser heredada, por lo que intentar utilizar `extends` sobre ella genera un error fatal.
-
-# 🎯 Conclusión
-
-En este laboratorio pude reforzar los conceptos básicos de la Programación Orientada a Objetos utilizando PHP. A través de los diferentes ejercicios pude observar de una manera más práctica cómo funcionan las clases, objetos, constructores, atributos y métodos.
-
-También pude trabajar con conceptos de herencia y encapsulamiento, viendo cómo una clase puede heredar características de otra y cómo los modificadores de acceso permiten controlar la forma en que se utilizan los atributos.
-
-Además, los ejercicios con `static`, `self`, `parent`, `final`, constantes y `traits` ayudaron a comprender otras herramientas que ofrece PHP para organizar y reutilizar el código.
-
-En general, la práctica permitió comprender mejor cómo se estructura un programa utilizando POO y cómo estos conceptos pueden ser utilizados posteriormente en proyectos más grandes y organizados.
-
-# 📚 Referencias
-
-- PHP Documentation. (2026). *Classes and Objects*. https://www.php.net/manual/en/language.oop5.php
-- PHP Documentation. (2026). *Static Keyword*. https://www.php.net/manual/en/language.oop5.static.php
-- PHP. (2026). PHP: Hypertext Preprocessor. https://www.php.net/
-
-# 👤 Información del Estudiante
-
-Este laboratorio ha sido desarrollado por la estudiante de la Universidad Tecnológica de Panamá:
+# Información del Estudiante
 
 **Nombre:** Vasti Legaspi  
 **Correo:** vasti.legaspí@utp.ac.pa  
